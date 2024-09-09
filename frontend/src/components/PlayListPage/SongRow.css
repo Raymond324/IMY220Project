@@ -1,0 +1,49 @@
+.song-row {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #444;
+    color: #fff;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.song-row:hover {
+    background-color: #222;
+    transform: scale(1.02);
+}
+
+.song-index {
+    width: 30px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+/* Style the song image */
+.song-image {
+    width: 40px; /* Adjust the size of the image */
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 5px; /* Optional: adds rounded corners */
+}
+
+.song-title {
+    flex: 2;
+}
+
+.song-album,
+.song-artist,
+.song-duration {
+    flex: 1;
+    text-align: center;
+}
+
+.delete-icon {
+    color: #f44336;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: transform 0.2s;
+}
+
+.delete-icon:hover {
+    transform: scale(1.2);
+}

@@ -1,0 +1,67 @@
+.home-page {
+    display: flex;
+}
+
+.main-content {
+    flex-grow: 1;
+    background-color: #111;
+    padding: 20px;
+    color: #fff;
+}
+
+/* Top section with background image */
+.top-section {
+    height: 300px; /* Adjust the height as needed */
+    background-image: url('https://images.unsplash.com/photo-1684082757061-c11a2c9a9787?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Update the path */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* Ensure the header is visible on top of the background */
+.header {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.recommended-section {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.album-grid {
+    display: flex;
+    justify-content: center; /* Center the entire grid */
+    flex-wrap: wrap; /* Allow cards to wrap onto new lines */
+    gap: 20px; /* Space between the album cards */
+    padding: 10px 0;
+    max-width: 1200px; /* Set a max width to control the layout */
+    margin: 0 auto; /* Center the grid horizontally */
+}
+
+.album-card {
+    width: 150px; /* Adjust card width */
+    text-align: center;
+}
+
+.album-card img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Add some shadow for a subtle effect */
+}
+
+.album-info {
+    margin-top: 10px;
+}
+
+.album-info h4 {
+    color: #fff;
+}
+
+.album-info p {
+    color: #999;
+}
+

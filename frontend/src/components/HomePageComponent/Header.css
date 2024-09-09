@@ -1,0 +1,40 @@
+/* Search bar styling */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.search-bar-container {
+    position: relative;
+    width: 400px;  /* Adjust the width of the search bar */
+}
+
+.search-bar {
+    width: 100%;
+    padding: 10px 20px; /* Padding to make space for the icon */
+    padding-left: 40px; /* Add space for the search icon on the left */
+    font-size: 16px;
+    border-radius: 20px;
+    border: none;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    text-align: center; /* Center text inside the input */
+}
+
+.search-bar::placeholder {
+    text-align: center; /* Ensure placeholder text is also centered */
+    color: #666;
+}
+
+/* Search icon inside the input field */
+.search-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);  /* Center the icon vertically */
+    color: #666;
+    font-size: 18px;
+}
