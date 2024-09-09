@@ -15,8 +15,7 @@ function App() {
                 <Route path="/signup" element={<SignUpPage />} />
                 <Route path="/home" element={<HomePage />} />
                 <Route path="/playlist-page" element={<PlayListPage />} />
-                {/*<Route path="/playlist-page" element={<PlayListPage />} />*/}
-                {/* Add other page routes here */}
+
             </Routes>
         </Router>
     );
