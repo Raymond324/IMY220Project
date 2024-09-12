@@ -1,8 +1,7 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import { FaHome, FaUser, FaPlusCircle, FaMusic } from 'react-icons/fa'; // Import icons
-import './Sidebar.css';
+import './SideBar.css';
 
 function Sidebar() {
     return (

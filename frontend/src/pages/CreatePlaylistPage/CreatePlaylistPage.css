@@ -1,0 +1,44 @@
+/* src/pages/CreatePlaylistPage/CreatePlaylistPage.css */
+
+.create-playlist-page {
+    display: flex;
+}
+
+.create-playlist-form {
+    margin: 20px;
+    text-align: center;
+}
+
+.create-playlist-form input {
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+    width: 250px;
+}
+
+.create-playlist-form button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.create-playlist-form button:hover {
+    background-color: #2980b9;
+}
+
+.playlist-content {
+    margin: 20px;
+}
+
+.song-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.song-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}

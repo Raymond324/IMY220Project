@@ -12,7 +12,7 @@ function SignUpPage() {
                 <h2 className="welcome-message">Join SoulEcho</h2>
                 <SignUpComponent />
                 <p className="login-message">
-                    Do you already have an account? <Link to="/login">Log in</Link>
+                    Do you already have an account? <Link to="/">Log in</Link>
                 </p>
             </div>
         </div>

@@ -2,11 +2,17 @@
     width: 150px;
     margin: 10px;
     text-align: center;
+    position: relative; /* 为了让喜欢按钮定位在图片上 */
 }
 
 .album-cover {
     width: 100%;
     border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+.album-cover:hover {
+    transform: scale(1.05); /* 鼠标悬停时放大图片 */
 }
 
 .album-info {
@@ -24,4 +30,22 @@
     font-weight: bold;
     margin: 2px 0;
     color: #555;
+}
+
+.like-icon {
+    color: #f44336;
+    cursor: pointer;
+    position: absolute; /* 绝对定位 */
+    bottom: 100px; /* 距离图片底部 */
+    right: 5px; /* 距离图片右侧 */
+    opacity: 0; /* 初始状态下隐藏 */
+    transition: opacity 0.3s ease-in-out, transform 0.2s; /* 动画效果 */
+}
+
+.album-card:hover .like-icon {
+    opacity: 1; /* 当鼠标悬停时显示喜欢按钮 */
+}
+
+.like-icon:hover {
+    transform: scale(1.1); /* 鼠标悬停在喜欢按钮上时放大 */
 }

@@ -1,0 +1,100 @@
+.profile-page {
+    display: flex;
+}
+
+.main-content {
+    flex-grow: 1;
+    background-color: #111;
+    padding: 20px;
+    color: #fff;
+}
+
+.top-section {
+    height: 300px;
+    background-image: url('https://images.unsplash.com/photo-1684082787158-8ea49e7cca69?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWcLfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+}
+
+.profile-content {
+    padding: 20px;
+    background-color: #000;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    background-color: #555;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.icon {
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.icon:hover {
+    color: #4CAF50;
+}
+
+.profile-info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    font-size: 16px;
+    color: #fff;
+}
+
+.profile-info span {
+    margin-right: 20px;
+}
+
+.profile-edit {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.profile-field {
+
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.profile-field label {
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.profile-field input {
+    padding: 10px;
+    background-color: #222;
+    border: 1px solid #444;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.profile-field input:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
