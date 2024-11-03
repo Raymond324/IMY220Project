@@ -1,6 +1,5 @@
-// src/pages/CreatePlaylistPage/CreatePlaylistPage.jsx
 import React, { useState } from 'react';
-import Sidebar from '../../components/HomePageComponent/Sidebar';
+import Sidebar from '../../components/HomePageComponent/SideBar';
 import Header from '../../components/HomePageComponent/Header';
 import SongRow from '../../components/PlayListPage/SongRow';
 import './CreatePlaylistPage.css';
@@ -10,12 +9,25 @@ function CreatePlaylistPage({ playList, setPlayList, createdPlaylists, setCreate
     const [isPlaylistCreated, setIsPlaylistCreated] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
 
-    const handleCreatePlaylist = (e) => {
+    // 创建播放列表的函数
+    const handleCreatePlaylist = async (e) => {
         e.preventDefault();
         if (playlistName.trim()) {
-            const newPlaylist = { name: playlistName, id: Date.now() };
-            setIsPlaylistCreated(true);
-            setCreatedPlaylists([...createdPlaylists, newPlaylist]);  // Add to createdPlaylists
+            try {
+                const response = await fetch('/api/playlists', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: playlistName }),
+                });
+
+                if (response.ok) {
+                    const newPlaylist = await response.json();
+                    setIsPlaylistCreated(true);
+                    setCreatedPlaylists([...createdPlaylists, newPlaylist]); // 更新侧边栏中的播放列表
+                }
+            } catch (error) {
+                console.error('Error creating playlist:', error);
+            }
         }
     };
 
@@ -46,7 +58,7 @@ function CreatePlaylistPage({ playList, setPlayList, createdPlaylists, setCreate
 
     return (
         <div className="create-playlist-page">
-            <Sidebar createdPlaylists={createdPlaylists} /> {/* Pass createdPlaylists */}
+            <Sidebar createdPlaylists={createdPlaylists} /> {/* 将createdPlaylists传递给Sidebar */}
             <div className="main-content">
                 <div className="top-section">
                     <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />

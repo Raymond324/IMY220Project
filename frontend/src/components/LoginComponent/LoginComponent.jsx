@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import './LoginComponent.css';
+import { useNavigate } from 'react-router-dom'; // 导入useNavigate钩子
 
 function LoginComponent() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({});
+    const [message, setMessage] = useState('');
+    const navigate = useNavigate(); // 创建navigate函数实例
 
     const validate = () => {
         let errors = {};
@@ -27,42 +29,59 @@ function LoginComponent() {
         return isValid;
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (validate()) {
-            console.log("Email:", email);
-            console.log("Password:", password);
-            // Perform login action here (you can later connect this to your backend)
+            const response = await fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+            if (response.status === 200) {
+                localStorage.setItem('user', email);
+                navigate('/home');
+                alert('Login successful'); // 使用alert显示登录成功信息
+            } else {
+                setErrors({ form: data.message });
+            }
         }
     };
 
     return (
-        <div className="login-component">
+        <div className="max-w-md mx-auto p-6 bg-dark border border-dark rounded-lg">
             <form onSubmit={handleSubmit}>
-                <div className="form-groups">
-                    <label htmlFor="email">Email:</label>
+                <div className="mb-4">
+                    <label htmlFor="email" className="block mb-2 font-bold text-light">Email:</label>
                     <input
                         type="text"
                         id="email"
                         name="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-primary"
                     />
-                    {errors.email && <span className="error">{errors.email}</span>}
+                    {errors.email && <span className="text-red-500 text-xs mt-2 block">{errors.email}</span>}
                 </div>
-                <div className="form-groups">
-                    <label htmlFor="password">Password:</label>
+                <div className="mb-4">
+                    <label htmlFor="password" className="block mb-2 font-bold text-light">Password:</label>
                     <input
                         type="password"
                         id="password"
                         name="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-primary"
                     />
-                    {errors.password && <span className="error">{errors.password}</span>}
+                    {errors.password && <span className="text-red-500 text-xs mt-2 block">{errors.password}</span>}
                 </div>
-                <button type="submit">Login</button>
+                {errors.form && <span className="text-red-500 text-xs block">{errors.form}</span>}
+                {message && <span className="text-green-500 text-xs block">{message}</span>}
+                <button type="submit" className="w-full py-3 bg-primary text-white rounded-md hover:bg-yellow-500 transition duration-300 mt-4">
+                    Login
+                </button>
             </form>
         </div>
     );

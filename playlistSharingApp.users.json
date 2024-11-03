@@ -1,0 +1,111 @@
+[{
+  "_id": {
+    "$oid": "66f58cbdaa14f4f28d7fa91b"
+  },
+  "email": "john@example.com",
+  "password": "123456789",
+  "friends": [
+    {
+      "username": "Raymond",
+      "email": "ray@example.com"
+    },
+    {
+      "username": "janeDoe",
+      "email": "jane@example.com"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66f58cf3aa14f4f28d7fa91d"
+  },
+  "email": "jane@example.com",
+  "password": "123456789",
+  "friends": [
+    {
+      "username": "johnDoe",
+      "email": "john@example.com"
+    },
+    {
+      "username": "Raymond",
+      "email": "ray@example.com"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66f58d7daa14f4f28d7fa91f"
+  },
+  "email": "ray@example.com",
+  "password": "Woaini-553",
+  "friends": [
+    {
+      "username": "johnDoe",
+      "email": "john@example.com"
+    },
+    {
+      "username": "janeDoe",
+      "email": "jane@example.com"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "66f5bf580d7fbb7c2ad1cb53"
+  },
+  "email": "testuser@example.com",
+  "password": "$2a$10$ctcDJjXRFMMJbNKiQXGQP.2Rc0EMZcHBEbR1cJjm4vnB5xW69I/i6",
+  "friends": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66f5c0540d7fbb7c2ad1cb59"
+  },
+  "email": "rayray@example.com",
+  "password": "$2a$10$Y7mIwJT/kwhmmPeucUe0x.QGE.uVrwiq3XaCXw6JgI.xx9kwvQWlu",
+  "friends": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66f5cbf539cef69827edc6d5"
+  },
+  "email": "u19194839@tuks.co.za",
+  "password": "$2a$10$vjG.JjpYGB9MdE0PV.NDIeb0/vC82fwkOu4xn.Vnyvf/9BttRK/oe",
+  "friends": [],
+  "__v": 0,
+  "country": "South Africa",
+  "dateOfBirth": "1999/03/24",
+  "gender": "Male"
+},
+{
+  "_id": {
+    "$oid": "66f5d0c5e574a5ba741e025f"
+  },
+  "email": "jinfengdurban@gmail.com",
+  "password": "$2a$10$iWcsArXljyufNL0.nEEw.OSdIX3iN581MTQaIDgEG9aLyLWVMMTpG",
+  "friends": [],
+  "__v": 0,
+  "country": "South Africa",
+  "dateOfBirth": "2000/03/24",
+  "gender": "Gender"
+},
+{
+  "_id": {
+    "$oid": "66f5d33649c6ea1ea772e0a0"
+  },
+  "email": "jj@qq.com",
+  "password": "$2a$10$QvZKGRpzOzwnrN/GRWIDf..gVleK6zgajON2CPmPv9S1jpIZIAv0a",
+  "friends": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66f7ffdfc2a6ab1e9cd71e34"
+  },
+  "email": "raymond@example.com",
+  "password": "$2a$10$996s5WIasLRQgv6Seh8kIOt/lcMs702IfI/Yh7ZB5vggrHruwtYlq",
+  "friends": [],
+  "__v": 0
+}]

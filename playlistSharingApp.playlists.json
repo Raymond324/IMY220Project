@@ -1,0 +1,56 @@
+[{
+  "_id": {
+    "$oid": "66f58ebbaa14f4f28d7fa922"
+  },
+  "name": "My Playlist 1",
+  "songs": [
+    {
+      "$oid": "66f58f9eaa14f4f28d7fa929"
+    },
+    {
+      "$oid": "66f58fa7aa14f4f28d7fa92b"
+    },
+    {
+      "$oid": "66f5df46aa14f4f28d7fa936"
+    },
+    {
+      "$oid": "66f5dfc7aa14f4f28d7fa939"
+    },
+    {
+      "$oid": "66f5e006aa14f4f28d7fa93b"
+    },
+    {
+      "$oid": "66f5e034aa14f4f28d7fa93e"
+    },
+    {
+      "$oid": "66f5e0ccaa14f4f28d7fa94a"
+    },
+    {
+      "$oid": "66f5e0acaa14f4f28d7fa947"
+    },
+    {
+      "$oid": "66f89416c8b057c20bff915e"
+    }
+  ],
+  "email": "u19194839@example.com",
+  "__v": 18
+},
+{
+  "_id": {
+    "$oid": "66f58eecaa14f4f28d7fa924"
+  },
+  "name": "My Playlist 2",
+  "songs": [
+    {
+      "$oid": "66f5e0acaa14f4f28d7fa947"
+    },
+    {
+      "$oid": "66f5e095aa14f4f28d7fa945"
+    },
+    {
+      "$oid": "66f5dfc7aa14f4f28d7fa939"
+    }
+  ],
+  "email": "jinfengdurban@example.com",
+  "__v": 4
+}]

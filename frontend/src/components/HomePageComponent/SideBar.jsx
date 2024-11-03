@@ -1,9 +1,40 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import { FaHome, FaUser, FaPlusCircle, FaMusic } from 'react-icons/fa'; // Import icons
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FaHome, FaUser, FaPlusCircle, FaMusic, FaTrashAlt } from 'react-icons/fa';
 import './SideBar.css';
 
 function Sidebar() {
+    const [playlists, setPlaylists] = useState([]);
+
+    // 获取所有播放列表
+    const fetchPlaylists = async () => {
+        try {
+            const response = await fetch('/api/playlists');
+            const data = await response.json();
+            setPlaylists(data); // 更新播放列表
+        } catch (error) {
+            console.error('Error fetching playlists:', error);
+        }
+    };
+
+    // 删除播放列表
+    const handleDeletePlaylist = async (playlistId) => {
+        try {
+            const response = await fetch(`/api/playlists/${playlistId}`, {
+                method: 'DELETE',
+            });
+            if (response.ok) {
+                setPlaylists(playlists.filter((playlist) => playlist._id !== playlistId));
+            }
+        } catch (error) {
+            console.error('Error deleting playlist:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchPlaylists();
+    }, []);
+
     return (
         <div className="sidebar">
             <ul className="sidebar-menu">
@@ -28,12 +59,18 @@ function Sidebar() {
             </ul>
             <hr className="divider" />
             <ul className="sidebar-playlist">
-                <li>
-                    <Link to="/playlist-page">
-                        <FaMusic className="icon" />
-                        <span className="menu-text">My Playlist 1</span>
-                    </Link>
-                </li>
+                {playlists.map((playlist) => (
+                    <li key={playlist._id} className="playlist-item">
+                        <Link to={`/playlist-page/${playlist._id}`}>
+                            <FaMusic className="icon" />
+                            <span className="menu-text">{playlist.name}</span>
+                        </Link>
+                        <FaTrashAlt
+                            className="delete-icon"
+                            onClick={() => handleDeletePlaylist(playlist._id)}
+                        />
+                    </li>
+                ))}
             </ul>
         </div>
     );

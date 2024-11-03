@@ -1,7 +1,7 @@
-// src/index.js
+import './index.css'; // Add this line to use Tailwind
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App'; // 引入App组件
+import App from './App';
 
 
 const rootElement = document.getElementById('root');

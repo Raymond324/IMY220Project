@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import Sidebar from '../../components/HomePageComponent/Sidebar';
+import React, { useState, useEffect } from 'react';
+import Sidebar from '../../components/HomePageComponent/SideBar';
 import Header from '../../components/HomePageComponent/Header';
 import { FaEdit, FaSave } from 'react-icons/fa'; // 引入编辑和保存图标
 import './ProfilePage.css';
@@ -7,26 +7,71 @@ import './ProfilePage.css';
 function ProfilePage() {
     const [isEditing, setIsEditing] = useState(false);
     const [profileData, setProfileData] = useState({
-        username: 'Raymond',
-        gender: 'Male',
-        dateOfBirth: '1999/03/24',
-        country: 'South Africa'
+        email: '',
+        gender: '',
+        dateOfBirth: '',
+        country: '',
     });
+    const userEmail = localStorage.getItem('user');  // 从 localStorage 获取用户 email
 
-    const handleEditClick = () => {
-        setIsEditing(true);
-    };
+    // 获取用户信息
+    useEffect(() => {
+        const fetchProfile = async () => {
+            try {
+                const response = await fetch(`/api/user/${userEmail}`);
+                const data = await response.json();
+                setProfileData({
+                    email: data.email,
+                    gender: data.gender || '',
+                    dateOfBirth: data.dateOfBirth || '',
+                    country: data.country || '',
+                });
+            } catch (error) {
+                console.error('Error fetching profile data:', error);
+            }
+        };
 
-    const handleSaveClick = () => {
+        fetchProfile();
+    }, [userEmail]);
+
+    // 保存用户信息
+    const handleSaveClick = async () => {
         setIsEditing(false);
-        // 在此处可以添加保存逻辑，例如将数据发送到服务器
+
+        try {
+            // 发送 PUT 请求，将修改后的数据发送到服务器
+            const response = await fetch(`/api/user/${userEmail}`, {  // 修正模板字符串
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    gender: profileData.gender,
+                    dateOfBirth: profileData.dateOfBirth,
+                    country: profileData.country,
+                }),
+            });
+
+            if (response.ok) {
+                const updatedProfile = await response.json();
+                setProfileData({
+                    email: updatedProfile.email,
+                    gender: updatedProfile.gender,
+                    dateOfBirth: updatedProfile.dateOfBirth,
+                    country: updatedProfile.country,
+                });
+                alert('Profile updated successfully');
+            } else {
+                console.error('Failed to update profile');
+            }
+        } catch (error) {
+            console.error('Error updating profile:', error);
+        }
     };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setProfileData(prevData => ({
+        setProfileData((prevData) => ({
             ...prevData,
-            [name]: value
+            [name]: value,
         }));
     };
 
@@ -41,7 +86,7 @@ function ProfilePage() {
                     <h2>SoulEcho Profile</h2>
                     <div className="profile-header">
                         <div className="profile-avatar"></div>
-                        <h3>{profileData.username}</h3>
+                        <h3>{profileData.email}</h3> {/* 显示用户邮箱 */}
                         {isEditing ? (
                             <div className="profile-info">
                                 <input
@@ -76,50 +121,10 @@ function ProfilePage() {
                             {isEditing ? (
                                 <FaSave className="icon" onClick={handleSaveClick} />
                             ) : (
-                                <FaEdit className="icon" onClick={handleEditClick} />
+                                <FaEdit className="icon" onClick={() => setIsEditing(true)} />
                             )}
                         </div>
                     </div>
-                    {isEditing && (
-                        <div className="profile-edit">
-                            <div className="profile-field">
-                                <label>Username</label>
-                                <input
-                                    type="text"
-                                    name="username"
-                                    value={profileData.username}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <div className="profile-field">
-                                <label>Gender</label>
-                                <input
-                                    type="text"
-                                    name="gender"
-                                    value={profileData.gender}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <div className="profile-field">
-                                <label>Date of Birth</label>
-                                <input
-                                    type="date"
-                                    name="dateOfBirth"
-                                    value={profileData.dateOfBirth}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                            <div className="profile-field">
-                                <label>Country or Region</label>
-                                <input
-                                    type="text"
-                                    name="country"
-                                    value={profileData.country}
-                                    onChange={handleChange}
-                                />
-                            </div>
-                        </div>
-                    )}
                 </div>
             </div>
         </div>
